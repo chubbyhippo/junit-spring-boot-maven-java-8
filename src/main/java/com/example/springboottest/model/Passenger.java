@@ -2,61 +2,75 @@ package com.example.springboottest.model;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Passenger {
-    private String name;
-    private Country country;
-    private boolean isRegistered;
 
-    public Passenger(String name) {
-        this.name = name;
-    }
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String name;
+	@ManyToOne
+	private Country country;
+	private boolean isRegistered;
 
-    public String getName() {
-        return name;
-    }
+	public Passenger() {
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	}
 
-    public Country getCountry() {
-        return country;
-    }
+	public Passenger(String name) {
+		this.name = name;
+	}
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public boolean isRegistered() {
-        return isRegistered;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setIsRegistered(boolean isRegistered) {
-        this.isRegistered = isRegistered;
-    }
+	public Country getCountry() {
+		return country;
+	}
 
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "name='" + name + '\'' +
-                ", country=" + country +
-                ", registered=" + isRegistered +
-                '}';
-    }
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Passenger passenger = (Passenger) o;
-        return isRegistered == passenger.isRegistered &&
-                Objects.equals(name, passenger.name) &&
-                Objects.equals(country, passenger.country);
-    }
+	public boolean isRegistered() {
+		return isRegistered;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, country, isRegistered);
-    }
+	public void setIsRegistered(boolean isRegistered) {
+		this.isRegistered = isRegistered;
+	}
+
+	@Override
+	public String toString() {
+		return "Passenger{" + "name='" + name + '\'' + ", country=" + country
+				+ ", registered=" + isRegistered + '}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Passenger passenger = (Passenger) o;
+		return isRegistered == passenger.isRegistered
+				&& Objects.equals(name, passenger.name)
+				&& Objects.equals(country, passenger.country);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, country, isRegistered);
+	}
 
 }
