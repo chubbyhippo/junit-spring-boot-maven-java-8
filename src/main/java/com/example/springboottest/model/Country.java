@@ -2,50 +2,60 @@ package com.example.springboottest.model;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Country {
-    private String name;
-    private String codeName;
 
-    public Country(String name, String codeName) {
-        this.name = name;
-        this.codeName = codeName;
-    }
+	@Id
+	private String codeName;
+	private String name;
 
-    public String getName() {
-        return name;
-    }
+	public Country() {
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	}
 
-    public String getCodeName() {
-        return codeName;
-    }
+	public Country(String name, String codeName) {
+		this.name = name;
+		this.codeName = codeName;
+	}
 
-    public void setCodeName(String codeName) {
-        this.codeName = codeName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "name='" + name + '\'' +
-                ", codeName='" + codeName + '\'' +
-                '}';
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return Objects.equals(name, country.name) &&
-                Objects.equals(codeName, country.codeName);
-    }
+	public String getCodeName() {
+		return codeName;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, codeName);
-    }
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
+	}
+
+	@Override
+	public String toString() {
+		return "Country{" + "name='" + name + '\'' + ", codeName='" + codeName
+				+ '\'' + '}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Country country = (Country) o;
+		return Objects.equals(name, country.name)
+				&& Objects.equals(codeName, country.codeName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, codeName);
+	}
 }
